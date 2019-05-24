@@ -85,7 +85,7 @@ class TouchableOpacity extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return TouchableOpacityState(
-      key: _key,
+      key: _gestureKey,
       child: child,
       activeOpacity: activeOpacity,
       onTapDown: onTapDown,
@@ -126,7 +126,8 @@ class TouchableOpacity extends StatefulWidget {
     );
   }
 
-  static final Key _key = Key("nksystems.touchable_opacity_gesture_detector");
+  static final Key _key = Key("nksystems.touchable_opacity_super");
+  static final Key _gestureKey = Key("nksystems.touchable_opacity_gesture_detector");
 
   /// The widget below this widget in the tree.
   ///
