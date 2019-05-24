@@ -9,13 +9,15 @@ addons:
     packages:
       - libstdc++6
       - fonts-droid
+env:
+  global:
+    - CODECOV_TOKEN="02486110-9ce4-4b7d-a552-c8af8f31138a"
 before_script:
   - git clone https://github.com/flutter/flutter.git -b master
   - ./flutter/bin/flutter doctor
 script:
   - ./flutter/bin/flutter test --coverage
-after_script:
-  - codecov
+after_script: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
 cache:
   directories:
     - $HOME/.pub-cache
