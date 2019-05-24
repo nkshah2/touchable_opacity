@@ -1,0 +1,20 @@
+name: touchable_opacity
+description: >-
+  This widget lets you provide a more visual feedback to users when they interact with your app. When the user touches the widget,
+  the opacity of the widget changes informing the user that their action has not been ignored.
+version: 0.0.1
+author: Nemi Shah <nemishah1212@gmail.com>
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
