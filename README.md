@@ -1,4 +1,5 @@
-# touchable_opacity_dart
+# touchable_opacity
+[![Build Status](https://travis-ci.com/nkshah2/touchable_opacity_flutter.svg?branch=master)](https://travis-ci.com/nkshah2/touchable_opacity_flutter)
 
 A new Flutter package.
 
