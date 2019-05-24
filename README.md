@@ -1,5 +1,6 @@
 # touchable_opacity
 [![Build Status](https://travis-ci.com/nkshah2/touchable_opacity_flutter.svg?branch=master)](https://travis-ci.com/nkshah2/touchable_opacity_flutter)
+[![codecov](https://codecov.io/gh/nkshah2/touchable_opacity/branch/master/graph/badge.svg)](https://codecov.io/gh/nkshah2/touchable_opacity)
 
 A new Flutter package.
 
