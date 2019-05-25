@@ -273,4 +273,43 @@ void main() {
         await gesture.up();
         expect(endCalled, equals(true));
       });
+
+  testWidgets("Touchable Opacity pan events work correctly",
+          (WidgetTester tester) async {
+        bool downCalled = false;
+        bool startCalled = false;
+        bool updateCalled = false;
+        bool endCalled = false;
+
+        Function down = (_) {downCalled = true;};
+        Function start = (_) {startCalled = true;};
+        Function update = (_) {updateCalled = true;};
+        Function end = (_) {endCalled = true;};
+
+        await tester.pumpWidget(MaterialApp(
+          home: Material(
+            child: TouchableOpacity(
+              child: Container(
+                height: 30,
+                width: 50,
+                child: Center(child: Text("Child Text")),
+              ),
+              onPanDown: down,
+              onPanStart: start,
+              onPanUpdate: update,
+              onPanEnd: end,
+            ),
+          ),
+        ));
+
+        TestGesture gesture =
+        await tester.startGesture(tester.getCenter(find.text("Child Text")));
+        expect(downCalled, equals(true));
+        await gesture.moveBy(Offset(0, 20));
+        expect(startCalled, equals(true));
+        await gesture.moveBy(Offset(0, -20));
+        expect(updateCalled, equals(true));
+        await gesture.up();
+        expect(endCalled, equals(true));
+      });
 }
