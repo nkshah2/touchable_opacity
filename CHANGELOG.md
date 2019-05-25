@@ -1,3 +1,3 @@
-## [0.0.1] - May 2019
+## [1.0.0] - May 2019
 
 * Initial Release
