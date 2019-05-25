@@ -44,3 +44,11 @@ TouchableOpacity uses gestureDetector internally and tries to maintain all the d
 ### Example
 
 The code found in the example folder of this repo shows how to use this package to render the content shown in the sample GIF. The folder contains a Flutter application that you can run yourself. Go [here](example/lib/main.dart) to jump into the code.
+
+### Support
+
+If you have any issues with using this package, or have any ideas you thnk are good additions please create an issue [here](https://github.com/nkshah2/touchable_opacity/issues)
+
+### Known Issues
+
+Because of the way GestureDetector renders, TouchableOpacity fills its parent. If you want to bound the size to that of its child simply place the TouchableOpacity widget in any one of the Layout widgets, you can see a list of layout widgets available in flutter [here](https://flutter.dev/docs/development/ui/widgets/layout)
