@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:touchable_opacity/touchable_opacity_dart.dart';
+import 'package:touchable_opacity/touchable_opacity.dart';
 
 void main() {
   testWidgets("Touchable Opacity renders correctly",
