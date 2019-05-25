@@ -87,7 +87,7 @@ class TouchableOpacity extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return TouchableOpacityState(
+    return _TouchableOpacityState(
       key: _gestureKey,
       child: child,
       activeOpacity: activeOpacity,
@@ -351,7 +351,7 @@ class TouchableOpacity extends StatefulWidget {
   final DragStartBehavior dragStartBehavior;
 }
 
-class TouchableOpacityState extends State<TouchableOpacity>
+class _TouchableOpacityState extends State<TouchableOpacity>
     with SingleTickerProviderStateMixin {
   final Widget child;
   final double activeOpacity;
@@ -394,7 +394,7 @@ class TouchableOpacityState extends State<TouchableOpacity>
 
   AnimationController _controller;
 
-  TouchableOpacityState({
+  _TouchableOpacityState({
     @required this.key,
     @required this.child,
     this.activeOpacity,
