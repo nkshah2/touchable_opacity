@@ -446,6 +446,7 @@ class TouchableOpacityState extends State<TouchableOpacity> with SingleTickerPro
       child: Opacity(
         child: child,
         opacity: _controller.value,
+        key: Key("nksystems.touchable_opacity_opacity"),
       ),
       onTapDown: _onTapDown,
       onTapUp: _onTapUp,

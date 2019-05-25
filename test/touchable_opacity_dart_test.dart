@@ -84,4 +84,71 @@ void main() {
 
     expect(count, equals(1));
   });
+
+  testWidgets("Touchable Opacity onTapCancel works correctly",
+      (WidgetTester tester) async {
+    int count = 0;
+    Function onTapCancel = () {
+      count++;
+    };
+
+    await tester.pumpWidget(MaterialApp(
+      home: Material(
+        child: TouchableOpacity(
+          child: Text("Child Text"),
+          onTapCancel: onTapCancel,
+        ),
+      ),
+    ));
+
+    await tester.drag(find.text("Child Text"), Offset(300, 300));
+    await tester.pump();
+
+    expect(count, equals(1));
+  });
+
+  testWidgets("Touchable Opacity onDoubleTap works correctly",
+      (WidgetTester tester) async {
+    int count = 0;
+    Function onDoubleTap = () {
+      count++;
+    };
+
+    await tester.pumpWidget(MaterialApp(
+      home: Material(
+        child: TouchableOpacity(
+          child: Text("Child Text"),
+          onDoubleTap: onDoubleTap,
+        ),
+      ),
+    ));
+
+    await tester.tap(find.text("Child Text"));
+    await tester.pump(Duration(milliseconds: 50));
+    await tester.tap(find.text("Child Text"));
+    await tester.pump(Duration(milliseconds: 500));
+
+    expect(count, equals(1));
+  });
+  
+  testWidgets("Touchable Opacity onLongPress works correctly", (WidgetTester tester) async {
+    int count = 0;
+    Function onLongPress = () {
+      count++;
+    };
+
+    await tester.pumpWidget(MaterialApp(
+      home: Material(
+        child: TouchableOpacity(
+          child: Text("Child Text"),
+          onLongPress: onLongPress,
+        ),
+      ),
+    ));
+    
+    await tester.startGesture(tester.getCenter(find.text("Child Text")));
+    await tester.pump(Duration(milliseconds: 500));
+
+    expect(count, equals(1));
+  });
 }
