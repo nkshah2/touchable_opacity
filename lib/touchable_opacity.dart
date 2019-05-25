@@ -441,7 +441,8 @@ class TouchableOpacityState extends State<TouchableOpacity>
     _controller = AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 100),
-        lowerBound: 0.5,
+        lowerBound: this.activeOpacity,
+        upperBound: 1.0,
         value: 1.0);
     _controller.addListener(() {
       setState(() {});
@@ -496,21 +497,27 @@ class TouchableOpacityState extends State<TouchableOpacity>
   }
 
   void _onTapDown(TapDownDetails details) {
-    _controller.reverse();
+    if ( activeOpacity != 1.0 ) {
+      _controller.reverse();
+    }
     if (onTapDown != null) {
       onTapDown(details);
     }
   }
 
   void _onTapUp(TapUpDetails details) {
-    _controller.forward();
+    if ( activeOpacity != 1.0 ) {
+      _controller.forward();
+    }
     if (onTapUp != null) {
       onTapUp(details);
     }
   }
 
   void _onTapCancel() {
-    _controller.forward();
+    if ( activeOpacity != 1.0 ) {
+      _controller.forward();
+    }
     if (onTapCancel != null) {
       onTapCancel();
     }
