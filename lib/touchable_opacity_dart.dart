@@ -55,27 +55,30 @@ class TouchableOpacity extends StatefulWidget {
     this.behavior,
     this.excludeFromSemantics = false,
     this.dragStartBehavior = DragStartBehavior.start,
-  }) : assert(excludeFromSemantics != null),
+  })  : assert(excludeFromSemantics != null),
         assert(dragStartBehavior != null),
         assert(() {
-          final bool haveVerticalDrag = onVerticalDragStart != null || onVerticalDragUpdate != null || onVerticalDragEnd != null;
-          final bool haveHorizontalDrag = onHorizontalDragStart != null || onHorizontalDragUpdate != null || onHorizontalDragEnd != null;
-          final bool havePan = onPanStart != null || onPanUpdate != null || onPanEnd != null;
-          final bool haveScale = onScaleStart != null || onScaleUpdate != null || onScaleEnd != null;
+          final bool haveVerticalDrag = onVerticalDragStart != null ||
+              onVerticalDragUpdate != null ||
+              onVerticalDragEnd != null;
+          final bool haveHorizontalDrag = onHorizontalDragStart != null ||
+              onHorizontalDragUpdate != null ||
+              onHorizontalDragEnd != null;
+          final bool havePan =
+              onPanStart != null || onPanUpdate != null || onPanEnd != null;
+          final bool haveScale = onScaleStart != null ||
+              onScaleUpdate != null ||
+              onScaleEnd != null;
           if (havePan || haveScale) {
             if (havePan && haveScale) {
-              throw FlutterError(
-                  'Incorrect TouchableOpacity arguments.\n'
-                      'Having both a pan gesture recognizer and a scale gesture recognizer is redundant; scale is a superset of pan. Just use the scale gesture recognizer.'
-              );
+              throw FlutterError('Incorrect TouchableOpacity arguments.\n'
+                  'Having both a pan gesture recognizer and a scale gesture recognizer is redundant; scale is a superset of pan. Just use the scale gesture recognizer.');
             }
             final String recognizer = havePan ? 'pan' : 'scale';
             if (haveVerticalDrag && haveHorizontalDrag) {
-              throw FlutterError(
-                  'Incorrect TouchableOpacity arguments.\n'
-                      'Simultaneously having a vertical drag gesture recognizer, a horizontal drag gesture recognizer, and a $recognizer gesture recognizer '
-                      'will result in the $recognizer gesture recognizer being ignored, since the other two will catch all drags.'
-              );
+              throw FlutterError('Incorrect TouchableOpacity arguments.\n'
+                  'Simultaneously having a vertical drag gesture recognizer, a horizontal drag gesture recognizer, and a $recognizer gesture recognizer '
+                  'will result in the $recognizer gesture recognizer being ignored, since the other two will catch all drags.');
             }
           }
           return true;
@@ -127,7 +130,8 @@ class TouchableOpacity extends StatefulWidget {
   }
 
   static final Key _key = Key("nksystems.touchable_opacity_super");
-  static final Key _gestureKey = Key("nksystems.touchable_opacity_gesture_detector");
+  static final Key _gestureKey =
+      Key("nksystems.touchable_opacity_gesture_detector");
 
   /// The widget below this widget in the tree.
   ///
@@ -347,7 +351,8 @@ class TouchableOpacity extends StatefulWidget {
   final DragStartBehavior dragStartBehavior;
 }
 
-class TouchableOpacityState extends State<TouchableOpacity> with SingleTickerProviderStateMixin {
+class TouchableOpacityState extends State<TouchableOpacity>
+    with SingleTickerProviderStateMixin {
   final Widget child;
   final double activeOpacity;
   final Key key;
@@ -433,9 +438,13 @@ class TouchableOpacityState extends State<TouchableOpacity> with SingleTickerPro
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 100), lowerBound: 0.5, value: 1.0);
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 100),
+        lowerBound: 0.5,
+        value: 1.0);
     _controller.addListener(() {
-      setState((){});
+      setState(() {});
     });
   }
 
@@ -488,21 +497,21 @@ class TouchableOpacityState extends State<TouchableOpacity> with SingleTickerPro
 
   void _onTapDown(TapDownDetails details) {
     _controller.reverse();
-    if ( onTapDown != null ) {
+    if (onTapDown != null) {
       onTapDown(details);
     }
   }
 
   void _onTapUp(TapUpDetails details) {
     _controller.forward();
-    if ( onTapUp != null ) {
+    if (onTapUp != null) {
       onTapUp(details);
     }
   }
 
   void _onTapCancel() {
     _controller.forward();
-    if ( onTapCancel != null ) {
+    if (onTapCancel != null) {
       onTapCancel();
     }
   }
