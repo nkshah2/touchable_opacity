@@ -130,8 +130,9 @@ void main() {
 
     expect(count, equals(1));
   });
-  
-  testWidgets("Touchable Opacity onLongPress works correctly", (WidgetTester tester) async {
+
+  testWidgets("Touchable Opacity onLongPress works correctly",
+      (WidgetTester tester) async {
     int count = 0;
     Function onLongPress = () {
       count++;
@@ -145,10 +146,131 @@ void main() {
         ),
       ),
     ));
-    
+
     await tester.startGesture(tester.getCenter(find.text("Child Text")));
     await tester.pump(Duration(milliseconds: 500));
 
     expect(count, equals(1));
   });
+
+  testWidgets("Touchable Opacity onLongPress events works correctly",
+      (WidgetTester tester) async {
+    bool longStartCalled = false;
+    bool longMoveCalled = false;
+    bool longUpCalled = false;
+    bool longEndCalled = false;
+
+    Function onLongStart = (_) {
+      longStartCalled = true;
+    };
+    Function onLongPressMove = (_) {
+      longMoveCalled = true;
+    };
+    Function onLongPressUp = () {
+      longUpCalled = true;
+    };
+    Function onLongPressEnd = (_) {
+      longEndCalled = true;
+    };
+
+    await tester.pumpWidget(MaterialApp(
+      home: Material(
+        child: TouchableOpacity(
+          child: Text("Child Text"),
+          onLongPressStart: onLongStart,
+          onLongPressMoveUpdate: onLongPressMove,
+          onLongPressUp: onLongPressUp,
+          onLongPressEnd: onLongPressEnd,
+        ),
+      ),
+    ));
+
+    TestGesture gesture =
+        await tester.startGesture(tester.getCenter(find.text("Child Text")));
+    await tester.pump(Duration(milliseconds: 500));
+    expect(longStartCalled, equals(true));
+    await gesture.moveBy(Offset(2, 0));
+    expect(longMoveCalled, equals(true));
+    await gesture.up();
+    expect(longUpCalled, equals(true));
+    expect(longEndCalled, equals(true));
+  });
+
+  testWidgets("Touchable Opacity vetical events work correctly",
+      (WidgetTester tester) async {
+    bool downCalled = false;
+    bool startCalled = false;
+    bool updateCalled = false;
+    bool endCalled = false;
+
+    Function down = (_) {downCalled = true;};
+    Function start = (_) {startCalled = true;};
+    Function update = (_) {updateCalled = true;};
+    Function end = (_) {endCalled = true;};
+
+    await tester.pumpWidget(MaterialApp(
+      home: Material(
+        child: TouchableOpacity(
+          child: Container(
+            height: 30,
+            width: 50,
+            child: Center(child: Text("Child Text")),
+          ),
+          onVerticalDragDown: down,
+          onVerticalDragStart: start,
+          onVerticalDragUpdate: update,
+          onVerticalDragEnd: end,
+        ),
+      ),
+    ));
+
+    TestGesture gesture =
+      await tester.startGesture(tester.getCenter(find.text("Child Text")));
+    expect(downCalled, equals(true));
+    await gesture.moveBy(Offset(0, 20));
+    expect(startCalled, equals(true));
+    await gesture.moveBy(Offset(0, -20));
+    expect(updateCalled, equals(true));
+    await gesture.up();
+    expect(endCalled, equals(true));
+  });
+
+  testWidgets("Touchable Opacity horizontal events work correctly",
+          (WidgetTester tester) async {
+        bool downCalled = false;
+        bool startCalled = false;
+        bool updateCalled = false;
+        bool endCalled = false;
+
+        Function down = (_) {downCalled = true;};
+        Function start = (_) {startCalled = true;};
+        Function update = (_) {updateCalled = true;};
+        Function end = (_) {endCalled = true;};
+
+        await tester.pumpWidget(MaterialApp(
+          home: Material(
+            child: TouchableOpacity(
+              child: Container(
+                height: 30,
+                width: 50,
+                child: Center(child: Text("Child Text")),
+              ),
+              onHorizontalDragDown: down,
+              onHorizontalDragStart: start,
+              onHorizontalDragUpdate: update,
+              onHorizontalDragEnd: end,
+            ),
+          ),
+        ));
+
+        TestGesture gesture =
+        await tester.startGesture(tester.getCenter(find.text("Child Text")));
+        expect(downCalled, equals(true));
+        await gesture.moveBy(Offset(20, 0));
+        expect(startCalled, equals(true));
+        await gesture.moveBy(Offset(-20, 0));
+        expect(updateCalled, equals(true));
+        await gesture.up();
+        expect(endCalled, equals(true));
+      });
 }

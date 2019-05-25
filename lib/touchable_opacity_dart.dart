@@ -65,14 +65,14 @@ class TouchableOpacity extends StatefulWidget {
           if (havePan || haveScale) {
             if (havePan && haveScale) {
               throw FlutterError(
-                  'Incorrect GestureDetector arguments.\n'
+                  'Incorrect TouchableOpacity arguments.\n'
                       'Having both a pan gesture recognizer and a scale gesture recognizer is redundant; scale is a superset of pan. Just use the scale gesture recognizer.'
               );
             }
             final String recognizer = havePan ? 'pan' : 'scale';
             if (haveVerticalDrag && haveHorizontalDrag) {
               throw FlutterError(
-                  'Incorrect GestureDetector arguments.\n'
+                  'Incorrect TouchableOpacity arguments.\n'
                       'Simultaneously having a vertical drag gesture recognizer, a horizontal drag gesture recognizer, and a $recognizer gesture recognizer '
                       'will result in the $recognizer gesture recognizer being ignored, since the other two will catch all drags.'
               );
