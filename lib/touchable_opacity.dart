@@ -450,6 +450,12 @@ class _TouchableOpacityState extends State<TouchableOpacity>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       key: key,
