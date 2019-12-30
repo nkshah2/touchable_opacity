@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  touchable_opacity: 1.0.2
+  touchable_opacity:
     path: ../
   cupertino_icons: ^0.1.2
 

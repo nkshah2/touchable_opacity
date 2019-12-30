@@ -14,8 +14,7 @@ void main() {
       ),
     ));
 
-    expect(find.byKey(Key("nksystems.touchable_opacity_gesture_detector")),
-        findsOneWidget);
+    expect(find.byType(Opacity), findsOneWidget);
     expect(find.text("Child Text"), findsOneWidget);
   });
 

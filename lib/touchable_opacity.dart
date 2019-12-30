@@ -18,6 +18,7 @@ class TouchableOpacity extends StatefulWidget {
   /// By default, gesture detectors contribute semantic information to the tree
   /// that is used by assistive technology.
   TouchableOpacity({
+    Key key,
     @required this.child,
     this.activeOpacity = 0.2,
     this.onTapDown,
@@ -83,12 +84,11 @@ class TouchableOpacity extends StatefulWidget {
           }
           return true;
         }()),
-        super(key: _key);
+        super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     return _TouchableOpacityState(
-      key: _gestureKey,
       child: child,
       activeOpacity: activeOpacity,
       onTapDown: onTapDown,
@@ -128,10 +128,6 @@ class TouchableOpacity extends StatefulWidget {
       dragStartBehavior: dragStartBehavior,
     );
   }
-
-  static final Key _key = Key("nksystems.touchable_opacity_super");
-  static final Key _gestureKey =
-      Key("nksystems.touchable_opacity_gesture_detector");
 
   /// The widget below this widget in the tree.
   ///
@@ -355,7 +351,6 @@ class _TouchableOpacityState extends State<TouchableOpacity>
     with SingleTickerProviderStateMixin {
   final Widget child;
   final double activeOpacity;
-  final Key key;
   final GestureTapDownCallback onTapDown;
   final GestureTapUpCallback onTapUp;
   final GestureTapCallback onTap;
@@ -395,7 +390,6 @@ class _TouchableOpacityState extends State<TouchableOpacity>
   AnimationController _controller;
 
   _TouchableOpacityState({
-    @required this.key,
     @required this.child,
     this.activeOpacity,
     @required this.onTapDown,
@@ -458,11 +452,9 @@ class _TouchableOpacityState extends State<TouchableOpacity>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      key: key,
       child: Opacity(
         child: child,
         opacity: _controller.value,
-        key: Key("nksystems.touchable_opacity_opacity"),
       ),
       onTapDown: _onTapDown,
       onTapUp: _onTapUp,
@@ -503,7 +495,7 @@ class _TouchableOpacityState extends State<TouchableOpacity>
   }
 
   void _onTapDown(TapDownDetails details) {
-    if ( activeOpacity != 1.0 ) {
+    if (activeOpacity != 1.0) {
       _controller.reverse();
     }
     if (onTapDown != null) {
@@ -512,7 +504,7 @@ class _TouchableOpacityState extends State<TouchableOpacity>
   }
 
   void _onTapUp(TapUpDetails details) {
-    if ( activeOpacity != 1.0 ) {
+    if (activeOpacity != 1.0) {
       _controller.forward();
     }
     if (onTapUp != null) {
@@ -521,7 +513,7 @@ class _TouchableOpacityState extends State<TouchableOpacity>
   }
 
   void _onTapCancel() {
-    if ( activeOpacity != 1.0 ) {
+    if (activeOpacity != 1.0) {
       _controller.forward();
     }
     if (onTapCancel != null) {
