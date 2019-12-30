@@ -1,3 +1,6 @@
+## [1.1.0] - Dec 2019
+* Adds an additional property ```key```, allowing users to assign a Key to the TouchableOpacity widget. Thanks @leeewh for pointing this out.
+
 ## [1.0.2] - May 2019
 
 * Fix issue cause by incorrect disposing of animation controller.
