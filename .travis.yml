@@ -9,7 +9,7 @@ addons:
     packages:
       - lib32stdc++6
       - libstdc++6
-      - fonts-droid
+      - fonts-noto
 env:
   global:
     - CODECOV_TOKEN=$CODECOV_TOKEN
