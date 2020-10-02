@@ -88,45 +88,7 @@ class TouchableOpacity extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _TouchableOpacityState(
-      child: child,
-      activeOpacity: activeOpacity,
-      onTapDown: onTapDown,
-      onTapUp: onTapUp,
-      onTap: onTap,
-      onTapCancel: onTapCancel,
-      onDoubleTap: onDoubleTap,
-      onLongPress: onLongPress,
-      onLongPressStart: onLongPressStart,
-      onLongPressMoveUpdate: onLongPressMoveUpdate,
-      onLongPressUp: onLongPressUp,
-      onLongPressEnd: onLongPressEnd,
-      onVerticalDragDown: onVerticalDragDown,
-      onVerticalDragStart: onVerticalDragStart,
-      onVerticalDragUpdate: onVerticalDragUpdate,
-      onVerticalDragEnd: onVerticalDragEnd,
-      onVerticalDragCancel: onVerticalDragCancel,
-      onHorizontalDragDown: onHorizontalDragDown,
-      onHorizontalDragStart: onHorizontalDragStart,
-      onHorizontalDragUpdate: onHorizontalDragUpdate,
-      onHorizontalDragEnd: onHorizontalDragEnd,
-      onHorizontalDragCancel: onHorizontalDragCancel,
-      onForcePressStart: onForcePressStart,
-      onForcePressPeak: onForcePressPeak,
-      onForcePressUpdate: onForcePressUpdate,
-      onForcePressEnd: onForcePressEnd,
-      onPanDown: onPanDown,
-      onPanStart: onPanStart,
-      onPanUpdate: onPanUpdate,
-      onPanEnd: onPanEnd,
-      onPanCancel: onPanCancel,
-      onScaleStart: onScaleStart,
-      onScaleUpdate: onScaleUpdate,
-      onScaleEnd: onScaleEnd,
-      behavior: behavior,
-      excludeFromSemantics: excludeFromSemantics,
-      dragStartBehavior: dragStartBehavior,
-    );
+    return _TouchableOpacityState();
   }
 
   /// The widget below this widget in the tree.
@@ -349,85 +311,7 @@ class TouchableOpacity extends StatefulWidget {
 
 class _TouchableOpacityState extends State<TouchableOpacity>
     with SingleTickerProviderStateMixin {
-  final Widget child;
-  final double activeOpacity;
-  final GestureTapDownCallback onTapDown;
-  final GestureTapUpCallback onTapUp;
-  final GestureTapCallback onTap;
-  final GestureTapCancelCallback onTapCancel;
-  final GestureTapCallback onDoubleTap;
-  final GestureLongPressCallback onLongPress;
-  final GestureLongPressStartCallback onLongPressStart;
-  final GestureLongPressMoveUpdateCallback onLongPressMoveUpdate;
-  final GestureLongPressUpCallback onLongPressUp;
-  final GestureLongPressEndCallback onLongPressEnd;
-  final GestureDragDownCallback onVerticalDragDown;
-  final GestureDragStartCallback onVerticalDragStart;
-  final GestureDragUpdateCallback onVerticalDragUpdate;
-  final GestureDragEndCallback onVerticalDragEnd;
-  final GestureDragCancelCallback onVerticalDragCancel;
-  final GestureDragDownCallback onHorizontalDragDown;
-  final GestureDragStartCallback onHorizontalDragStart;
-  final GestureDragUpdateCallback onHorizontalDragUpdate;
-  final GestureDragEndCallback onHorizontalDragEnd;
-  final GestureDragCancelCallback onHorizontalDragCancel;
-  final GestureForcePressStartCallback onForcePressStart;
-  final GestureForcePressPeakCallback onForcePressPeak;
-  final GestureForcePressUpdateCallback onForcePressUpdate;
-  final GestureForcePressEndCallback onForcePressEnd;
-  final GestureDragDownCallback onPanDown;
-  final GestureDragStartCallback onPanStart;
-  final GestureDragUpdateCallback onPanUpdate;
-  final GestureDragEndCallback onPanEnd;
-  final GestureDragCancelCallback onPanCancel;
-  final GestureScaleStartCallback onScaleStart;
-  final GestureScaleUpdateCallback onScaleUpdate;
-  final GestureScaleEndCallback onScaleEnd;
-  final HitTestBehavior behavior;
-  final bool excludeFromSemantics;
-  final DragStartBehavior dragStartBehavior;
-
   AnimationController _controller;
-
-  _TouchableOpacityState({
-    @required this.child,
-    this.activeOpacity,
-    @required this.onTapDown,
-    @required this.onTapUp,
-    @required this.onTap,
-    @required this.onTapCancel,
-    @required this.onDoubleTap,
-    @required this.onLongPress,
-    @required this.onLongPressStart,
-    @required this.onLongPressMoveUpdate,
-    @required this.onLongPressUp,
-    @required this.onLongPressEnd,
-    @required this.onVerticalDragDown,
-    @required this.onVerticalDragStart,
-    @required this.onVerticalDragUpdate,
-    @required this.onVerticalDragEnd,
-    @required this.onVerticalDragCancel,
-    @required this.onHorizontalDragDown,
-    @required this.onHorizontalDragStart,
-    @required this.onHorizontalDragUpdate,
-    @required this.onHorizontalDragEnd,
-    @required this.onHorizontalDragCancel,
-    @required this.onForcePressStart,
-    @required this.onForcePressPeak,
-    @required this.onForcePressUpdate,
-    @required this.onForcePressEnd,
-    @required this.onPanDown,
-    @required this.onPanStart,
-    @required this.onPanUpdate,
-    @required this.onPanEnd,
-    @required this.onPanCancel,
-    @required this.onScaleStart,
-    @required this.onScaleUpdate,
-    @required this.onScaleEnd,
-    @required this.behavior,
-    this.excludeFromSemantics = false,
-    this.dragStartBehavior = DragStartBehavior.start,
-  });
 
   @override
   void initState() {
@@ -435,7 +319,7 @@ class _TouchableOpacityState extends State<TouchableOpacity>
     _controller = AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 100),
-        lowerBound: this.activeOpacity,
+        lowerBound: widget.activeOpacity,
         upperBound: 1.0,
         value: 1.0);
     _controller.addListener(() {
@@ -453,71 +337,71 @@ class _TouchableOpacityState extends State<TouchableOpacity>
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Opacity(
-        child: child,
+        child: widget.child,
         opacity: _controller.value,
       ),
       onTapDown: _onTapDown,
       onTapUp: _onTapUp,
-      onTap: onTap,
+      onTap: widget.onTap,
       onTapCancel: _onTapCancel,
-      onDoubleTap: onDoubleTap,
-      onLongPress: onLongPress,
-      onLongPressStart: onLongPressStart,
-      onLongPressMoveUpdate: onLongPressMoveUpdate,
-      onLongPressUp: onLongPressUp,
-      onLongPressEnd: onLongPressEnd,
-      onVerticalDragDown: onVerticalDragDown,
-      onVerticalDragStart: onVerticalDragStart,
-      onVerticalDragUpdate: onVerticalDragUpdate,
-      onVerticalDragEnd: onVerticalDragEnd,
-      onVerticalDragCancel: onVerticalDragCancel,
-      onHorizontalDragDown: onHorizontalDragDown,
-      onHorizontalDragStart: onHorizontalDragStart,
-      onHorizontalDragUpdate: onHorizontalDragUpdate,
-      onHorizontalDragEnd: onHorizontalDragEnd,
-      onHorizontalDragCancel: onHorizontalDragCancel,
-      onForcePressStart: onForcePressStart,
-      onForcePressPeak: onForcePressPeak,
-      onForcePressUpdate: onForcePressUpdate,
-      onForcePressEnd: onForcePressEnd,
-      onPanDown: onPanDown,
-      onPanStart: onPanStart,
-      onPanUpdate: onPanUpdate,
-      onPanEnd: onPanEnd,
-      onPanCancel: onPanCancel,
-      onScaleStart: onScaleStart,
-      onScaleUpdate: onScaleUpdate,
-      onScaleEnd: onScaleEnd,
-      behavior: behavior,
-      excludeFromSemantics: excludeFromSemantics,
-      dragStartBehavior: dragStartBehavior,
+      onDoubleTap: widget.onDoubleTap,
+      onLongPress: widget.onLongPress,
+      onLongPressStart: widget.onLongPressStart,
+      onLongPressMoveUpdate: widget.onLongPressMoveUpdate,
+      onLongPressUp: widget.onLongPressUp,
+      onLongPressEnd: widget.onLongPressEnd,
+      onVerticalDragDown: widget.onVerticalDragDown,
+      onVerticalDragStart: widget.onVerticalDragStart,
+      onVerticalDragUpdate: widget.onVerticalDragUpdate,
+      onVerticalDragEnd: widget.onVerticalDragEnd,
+      onVerticalDragCancel: widget.onVerticalDragCancel,
+      onHorizontalDragDown: widget.onHorizontalDragDown,
+      onHorizontalDragStart: widget.onHorizontalDragStart,
+      onHorizontalDragUpdate: widget.onHorizontalDragUpdate,
+      onHorizontalDragEnd: widget.onHorizontalDragEnd,
+      onHorizontalDragCancel: widget.onHorizontalDragCancel,
+      onForcePressStart: widget.onForcePressStart,
+      onForcePressPeak: widget.onForcePressPeak,
+      onForcePressUpdate: widget.onForcePressUpdate,
+      onForcePressEnd: widget.onForcePressEnd,
+      onPanDown: widget.onPanDown,
+      onPanStart: widget.onPanStart,
+      onPanUpdate: widget.onPanUpdate,
+      onPanEnd: widget.onPanEnd,
+      onPanCancel: widget.onPanCancel,
+      onScaleStart: widget.onScaleStart,
+      onScaleUpdate: widget.onScaleUpdate,
+      onScaleEnd: widget.onScaleEnd,
+      behavior: widget.behavior,
+      excludeFromSemantics: widget.excludeFromSemantics,
+      dragStartBehavior: widget.dragStartBehavior,
     );
   }
 
   void _onTapDown(TapDownDetails details) {
-    if (activeOpacity != 1.0) {
+    if (widget.activeOpacity != 1.0) {
       _controller.reverse();
     }
-    if (onTapDown != null) {
-      onTapDown(details);
+    if (widget.onTapDown != null) {
+      widget.onTapDown(details);
     }
   }
 
   void _onTapUp(TapUpDetails details) {
-    if (activeOpacity != 1.0) {
+    if (widget.activeOpacity != 1.0) {
       _controller.forward();
     }
-    if (onTapUp != null) {
-      onTapUp(details);
+    if (widget.onTapUp != null) {
+      widget.onTapUp(details);
     }
   }
 
   void _onTapCancel() {
-    if (activeOpacity != 1.0) {
+    if (widget.activeOpacity != 1.0) {
       _controller.forward();
     }
-    if (onTapCancel != null) {
-      onTapCancel();
+    if (widget.onTapCancel != null) {
+      widget.onTapCancel();
     }
   }
 }
