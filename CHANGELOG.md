@@ -1,4 +1,4 @@
-## [1.1.1] - October 2020
+## [1.1.1 + 1.1.2] - October 2020
 * Fixes an issue that would not rebuild the widget when using hot reload
 
 ## [1.1.0] - Dec 2019

@@ -1,6 +1,6 @@
 name: touchable_opacity
 description: This widget lets you provide a more visual feedback to users when they interact with your app, similar to TouchableOpacity in React Native.
-version: 1.1.1
+version: 1.1.2
 repository: https://github.com/nkshah2/touchable_opacity
 issue_tracker: https://github.com/nkshah2/touchable_opacity/issues
 documentation:
