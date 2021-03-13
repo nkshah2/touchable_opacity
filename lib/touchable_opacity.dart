@@ -18,8 +18,8 @@ class TouchableOpacity extends StatefulWidget {
   /// By default, gesture detectors contribute semantic information to the tree
   /// that is used by assistive technology.
   TouchableOpacity({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.activeOpacity = 0.2,
     this.onTapDown,
     this.onTapUp,
@@ -107,14 +107,14 @@ class TouchableOpacity extends StatefulWidget {
   /// This is called after a short timeout, even if the winning gesture has not
   /// yet been selected. If the tap gesture wins, [onTapUp] will be called,
   /// otherwise [onTapCancel] will be called.
-  final GestureTapDownCallback onTapDown;
+  final GestureTapDownCallback? onTapDown;
 
   /// A pointer that will trigger a tap has stopped contacting the screen at a
   /// particular location.
   ///
   /// This triggers immediately before [onTap] in the case of the tap gesture
   /// winning. If the tap gesture did not win, [onTapCancel] is called instead.
-  final GestureTapUpCallback onTapUp;
+  final GestureTapUpCallback? onTapUp;
 
   /// A tap has occurred.
   ///
@@ -125,18 +125,18 @@ class TouchableOpacity extends StatefulWidget {
   ///
   ///  * [onTapUp], which is called at the same time but includes details
   ///    regarding the pointer position.
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
 
   /// The pointer that previously triggered [onTapDown] will not end up causing
   /// a tap.
   ///
   /// This is called after [onTapDown], and instead of [onTapUp] and [onTap], if
   /// the tap gesture did not win.
-  final GestureTapCancelCallback onTapCancel;
+  final GestureTapCancelCallback? onTapCancel;
 
   /// The user has tapped the screen at the same location twice in quick
   /// succession.
-  final GestureTapCallback onDoubleTap;
+  final GestureTapCallback? onDoubleTap;
 
   /// Called when a long press gesture has been recognized.
   ///
@@ -147,7 +147,7 @@ class TouchableOpacity extends StatefulWidget {
   ///
   ///  * [onLongPressStart], which has the same timing but has data for the
   ///    press location.
-  final GestureLongPressCallback onLongPress;
+  final GestureLongPressCallback? onLongPress;
 
   /// Callback for long press start with gesture location.
   ///
@@ -157,10 +157,10 @@ class TouchableOpacity extends StatefulWidget {
   /// See also:
   ///
   ///  * [onLongPress], which has the same timing but without the location data.
-  final GestureLongPressStartCallback onLongPressStart;
+  final GestureLongPressStartCallback? onLongPressStart;
 
   /// A pointer has been drag-moved after a long press.
-  final GestureLongPressMoveUpdateCallback onLongPressMoveUpdate;
+  final GestureLongPressMoveUpdateCallback? onLongPressMoveUpdate;
 
   /// A pointer that has triggered a long-press has stopped contacting the screen.
   ///
@@ -168,80 +168,80 @@ class TouchableOpacity extends StatefulWidget {
   ///
   ///  * [onLongPressEnd], which has the same timing but has data for the up
   ///    gesture location.
-  final GestureLongPressUpCallback onLongPressUp;
+  final GestureLongPressUpCallback? onLongPressUp;
 
   /// A pointer that has triggered a long-press has stopped contacting the screen.
   ///
   /// See also:
   ///
   ///  * [onLongPressUp], which has the same timing but without the location data.
-  final GestureLongPressEndCallback onLongPressEnd;
+  final GestureLongPressEndCallback? onLongPressEnd;
 
   /// A pointer has contacted the screen and might begin to move vertically.
-  final GestureDragDownCallback onVerticalDragDown;
+  final GestureDragDownCallback? onVerticalDragDown;
 
   /// A pointer has contacted the screen and has begun to move vertically.
-  final GestureDragStartCallback onVerticalDragStart;
+  final GestureDragStartCallback? onVerticalDragStart;
 
   /// A pointer that is in contact with the screen and moving vertically has
   /// moved in the vertical direction.
-  final GestureDragUpdateCallback onVerticalDragUpdate;
+  final GestureDragUpdateCallback? onVerticalDragUpdate;
 
   /// A pointer that was previously in contact with the screen and moving
   /// vertically is no longer in contact with the screen and was moving at a
   /// specific velocity when it stopped contacting the screen.
-  final GestureDragEndCallback onVerticalDragEnd;
+  final GestureDragEndCallback? onVerticalDragEnd;
 
   /// The pointer that previously triggered [onVerticalDragDown] did not
   /// complete.
-  final GestureDragCancelCallback onVerticalDragCancel;
+  final GestureDragCancelCallback? onVerticalDragCancel;
 
   /// A pointer has contacted the screen and might begin to move horizontally.
-  final GestureDragDownCallback onHorizontalDragDown;
+  final GestureDragDownCallback? onHorizontalDragDown;
 
   /// A pointer has contacted the screen and has begun to move horizontally.
-  final GestureDragStartCallback onHorizontalDragStart;
+  final GestureDragStartCallback? onHorizontalDragStart;
 
   /// A pointer that is in contact with the screen and moving horizontally has
   /// moved in the horizontal direction.
-  final GestureDragUpdateCallback onHorizontalDragUpdate;
+  final GestureDragUpdateCallback? onHorizontalDragUpdate;
 
   /// A pointer that was previously in contact with the screen and moving
   /// horizontally is no longer in contact with the screen and was moving at a
   /// specific velocity when it stopped contacting the screen.
-  final GestureDragEndCallback onHorizontalDragEnd;
+  final GestureDragEndCallback? onHorizontalDragEnd;
 
   /// The pointer that previously triggered [onHorizontalDragDown] did not
   /// complete.
-  final GestureDragCancelCallback onHorizontalDragCancel;
+  final GestureDragCancelCallback? onHorizontalDragCancel;
 
   /// A pointer has contacted the screen and might begin to move.
-  final GestureDragDownCallback onPanDown;
+  final GestureDragDownCallback? onPanDown;
 
   /// A pointer has contacted the screen and has begun to move.
-  final GestureDragStartCallback onPanStart;
+  final GestureDragStartCallback? onPanStart;
 
   /// A pointer that is in contact with the screen and moving has moved again.
-  final GestureDragUpdateCallback onPanUpdate;
+  final GestureDragUpdateCallback? onPanUpdate;
 
   /// A pointer that was previously in contact with the screen and moving
   /// is no longer in contact with the screen and was moving at a specific
   /// velocity when it stopped contacting the screen.
-  final GestureDragEndCallback onPanEnd;
+  final GestureDragEndCallback? onPanEnd;
 
   /// The pointer that previously triggered [onPanDown] did not complete.
-  final GestureDragCancelCallback onPanCancel;
+  final GestureDragCancelCallback? onPanCancel;
 
   /// The pointers in contact with the screen have established a focal point and
   /// initial scale of 1.0.
-  final GestureScaleStartCallback onScaleStart;
+  final GestureScaleStartCallback? onScaleStart;
 
   /// The pointers in contact with the screen have indicated a new focal point
   /// and/or scale.
-  final GestureScaleUpdateCallback onScaleUpdate;
+  final GestureScaleUpdateCallback? onScaleUpdate;
 
   /// The pointers are no longer in contact with the screen.
-  final GestureScaleEndCallback onScaleEnd;
+  final GestureScaleEndCallback? onScaleEnd;
 
   /// The pointer is in contact with the screen and has pressed with sufficient
   /// force to initiate a force press. The amount of force is at least
@@ -249,7 +249,7 @@ class TouchableOpacity extends StatefulWidget {
   ///
   /// Note that this callback will only be fired on devices with pressure
   /// detecting screens.
-  final GestureForcePressStartCallback onForcePressStart;
+  final GestureForcePressStartCallback? onForcePressStart;
 
   /// The pointer is in contact with the screen and has pressed with the maximum
   /// force. The amount of force is at least
@@ -257,7 +257,7 @@ class TouchableOpacity extends StatefulWidget {
   ///
   /// Note that this callback will only be fired on devices with pressure
   /// detecting screens.
-  final GestureForcePressPeakCallback onForcePressPeak;
+  final GestureForcePressPeakCallback? onForcePressPeak;
 
   /// A pointer is in contact with the screen, has previously passed the
   /// [ForcePressGestureRecognizer.startPressure] and is either moving on the
@@ -266,19 +266,19 @@ class TouchableOpacity extends StatefulWidget {
   ///
   /// Note that this callback will only be fired on devices with pressure
   /// detecting screens.
-  final GestureForcePressUpdateCallback onForcePressUpdate;
+  final GestureForcePressUpdateCallback? onForcePressUpdate;
 
   /// The pointer is no longer in contact with the screen.
   ///
   /// Note that this callback will only be fired on devices with pressure
   /// detecting screens.
-  final GestureForcePressEndCallback onForcePressEnd;
+  final GestureForcePressEndCallback? onForcePressEnd;
 
   /// How this gesture detector should behave during hit testing.
   ///
   /// This defaults to [HitTestBehavior.deferToChild] if [child] is not null and
   /// [HitTestBehavior.translucent] if child is null.
-  final HitTestBehavior behavior;
+  final HitTestBehavior? behavior;
 
   /// Whether to exclude these gestures from the semantics tree. For
   /// example, the long-press gesture for showing a tooltip is
@@ -311,7 +311,7 @@ class TouchableOpacity extends StatefulWidget {
 
 class _TouchableOpacityState extends State<TouchableOpacity>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -383,7 +383,7 @@ class _TouchableOpacityState extends State<TouchableOpacity>
       _controller.reverse();
     }
     if (widget.onTapDown != null) {
-      widget.onTapDown(details);
+      widget.onTapDown!(details);
     }
   }
 
@@ -392,7 +392,7 @@ class _TouchableOpacityState extends State<TouchableOpacity>
       _controller.forward();
     }
     if (widget.onTapUp != null) {
-      widget.onTapUp(details);
+      widget.onTapUp!(details);
     }
   }
 
@@ -401,7 +401,7 @@ class _TouchableOpacityState extends State<TouchableOpacity>
       _controller.forward();
     }
     if (widget.onTapCancel != null) {
-      widget.onTapCancel();
+      widget.onTapCancel!();
     }
   }
 }
