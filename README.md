@@ -13,7 +13,7 @@ Add the package to your pubspec.yaml file
 
 ```dart
 dependencies:
-	touchable_opacity: 1.1.2
+	touchable_opacity: 1.2.0
 ```
 
 ### Usage
