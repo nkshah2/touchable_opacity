@@ -13,8 +13,8 @@ addons:
 env:
   global:
     - CODECOV_TOKEN=$CODECOV_TOKEN
-before_script:
-  - git clone https://github.com/flutter/flutter.git -b master
+install:
+  - git clone https://github.com/flutter/flutter.git -b stable
   - ./flutter/bin/flutter doctor
 script:
   - ./flutter/bin/flutter test --coverage
