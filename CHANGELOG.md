@@ -1,3 +1,5 @@
+## [1.2.0] - March 2021
+* Adds null safety
 ## [1.1.1 + 1.1.2] - October 2020
 * Fixes an issue that would not rebuild the widget when using hot reload
 
