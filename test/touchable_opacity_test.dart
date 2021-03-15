@@ -29,7 +29,7 @@ void main() {
       home: Material(
         child: TouchableOpacity(
           child: Text("Child Text"),
-          onTapDown: onTapDown,
+          onTapDown: onTapDown as void Function(TapDownDetails)?,
         ),
       ),
     ));
@@ -51,7 +51,7 @@ void main() {
       home: Material(
         child: TouchableOpacity(
           child: Text("Child Text"),
-          onTapUp: onTapUp,
+          onTapUp: onTapUp as void Function(TapUpDetails)?,
         ),
       ),
     ));
@@ -73,7 +73,7 @@ void main() {
       home: Material(
         child: TouchableOpacity(
           child: Text("Child Text"),
-          onTap: onTap,
+          onTap: onTap as void Function()?,
         ),
       ),
     ));
@@ -95,7 +95,7 @@ void main() {
       home: Material(
         child: TouchableOpacity(
           child: Text("Child Text"),
-          onTapCancel: onTapCancel,
+          onTapCancel: onTapCancel as void Function()?,
         ),
       ),
     ));
@@ -117,7 +117,7 @@ void main() {
       home: Material(
         child: TouchableOpacity(
           child: Text("Child Text"),
-          onDoubleTap: onDoubleTap,
+          onDoubleTap: onDoubleTap as void Function()?,
         ),
       ),
     ));
@@ -141,7 +141,7 @@ void main() {
       home: Material(
         child: TouchableOpacity(
           child: Text("Child Text"),
-          onLongPress: onLongPress,
+          onLongPress: onLongPress as void Function()?,
         ),
       ),
     ));
@@ -176,10 +176,10 @@ void main() {
       home: Material(
         child: TouchableOpacity(
           child: Text("Child Text"),
-          onLongPressStart: onLongStart,
-          onLongPressMoveUpdate: onLongPressMove,
-          onLongPressUp: onLongPressUp,
-          onLongPressEnd: onLongPressEnd,
+          onLongPressStart: onLongStart as void Function(LongPressStartDetails)?,
+          onLongPressMoveUpdate: onLongPressMove as void Function(LongPressMoveUpdateDetails)?,
+          onLongPressUp: onLongPressUp as void Function()?,
+          onLongPressEnd: onLongPressEnd as void Function(LongPressEndDetails)?,
         ),
       ),
     ));
@@ -223,10 +223,10 @@ void main() {
             width: 50,
             child: Center(child: Text("Child Text")),
           ),
-          onVerticalDragDown: down,
-          onVerticalDragStart: start,
-          onVerticalDragUpdate: update,
-          onVerticalDragEnd: end,
+          onVerticalDragDown: down as void Function(DragDownDetails)?,
+          onVerticalDragStart: start as void Function(DragStartDetails)?,
+          onVerticalDragUpdate: update as void Function(DragUpdateDetails)?,
+          onVerticalDragEnd: end as void Function(DragEndDetails)?,
         ),
       ),
     ));
@@ -270,10 +270,10 @@ void main() {
             width: 50,
             child: Center(child: Text("Child Text")),
           ),
-          onHorizontalDragDown: down,
-          onHorizontalDragStart: start,
-          onHorizontalDragUpdate: update,
-          onHorizontalDragEnd: end,
+          onHorizontalDragDown: down as void Function(DragDownDetails)?,
+          onHorizontalDragStart: start as void Function(DragStartDetails)?,
+          onHorizontalDragUpdate: update as void Function(DragUpdateDetails)?,
+          onHorizontalDragEnd: end as void Function(DragEndDetails)?,
         ),
       ),
     ));
@@ -317,10 +317,10 @@ void main() {
             width: 50,
             child: Center(child: Text("Child Text")),
           ),
-          onPanDown: down,
-          onPanStart: start,
-          onPanUpdate: update,
-          onPanEnd: end,
+          onPanDown: down as void Function(DragDownDetails)?,
+          onPanStart: start as void Function(DragStartDetails)?,
+          onPanUpdate: update as void Function(DragUpdateDetails)?,
+          onPanEnd: end as void Function(DragEndDetails)?,
         ),
       ),
     ));
